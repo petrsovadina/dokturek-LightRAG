@@ -1,0 +1,240 @@
+@import 'tailwindcss';
+
+@plugin 'tailwindcss-animate';
+@plugin 'tailwind-scrollbar';
+
+@source '../index.html';
+@source './**/*.{ts,tsx}';
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Dokturek.ai brand — light theme. See DESIGN.md for source tokens. */
+  --background: hsl(0 0% 100%);
+  --foreground: hsl(245 61% 15%); /* #130F3E deep indigo */
+  --card: hsl(0 0% 100%);
+  --card-foreground: hsl(245 61% 15%);
+  --popover: hsl(0 0% 100%);
+  --popover-foreground: hsl(245 61% 15%);
+  --primary: hsl(262 83% 58%); /* #7C3BED brand purple */
+  --primary-foreground: hsl(0 0% 100%);
+  --secondary: hsl(247 47% 97%); /* #F4F3FC lilac surface */
+  --secondary-foreground: hsl(245 61% 15%);
+  --muted: hsl(247 47% 97%);
+  --muted-foreground: hsl(245 20% 45%);
+  --accent: hsl(262 60% 95%); /* light lilac hover */
+  --accent-foreground: hsl(262 83% 40%);
+  --destructive: hsl(0 84.2% 60.2%);
+  --destructive-foreground: hsl(0 0% 98%);
+  --border: hsl(250 45% 90%); /* #E5DFFB lilac border */
+  --input: hsl(250 45% 90%);
+  --ring: hsl(262 83% 58%);
+  --chart-1: hsl(262 83% 58%);
+  --chart-2: hsl(280 85% 70%); /* #DB9EFA lilac */
+  --chart-3: hsl(245 61% 30%);
+  --chart-4: hsl(290 75% 60%); /* #C058F3 orchid */
+  --chart-5: hsl(252 70% 80%);
+  --radius: 0.75rem;
+  --sidebar-background: hsl(247 47% 98%);
+  --sidebar-foreground: hsl(245 30% 26%);
+  --sidebar-primary: hsl(262 83% 58%);
+  --sidebar-primary-foreground: hsl(0 0% 100%);
+  --sidebar-accent: hsl(262 60% 95%);
+  --sidebar-accent-foreground: hsl(262 83% 40%);
+  --sidebar-border: hsl(250 45% 90%);
+  --sidebar-ring: hsl(262 83% 58%);
+}
+
+.dark {
+  /* Dokturek.ai brand — dark theme based on hero violet gradient (#20074B→#5C0986). */
+  --background: hsl(260 65% 8%); /* deep hero violet */
+  --foreground: hsl(0 0% 98%);
+  --card: hsl(260 50% 13%);
+  --card-foreground: hsl(0 0% 98%);
+  --popover: hsl(260 50% 13%);
+  --popover-foreground: hsl(0 0% 98%);
+  --primary: hsl(264 90% 72%); /* lightened brand purple for dark contrast */
+  --primary-foreground: hsl(260 65% 10%);
+  --secondary: hsl(260 40% 18%);
+  --secondary-foreground: hsl(0 0% 98%);
+  --muted: hsl(260 35% 18%);
+  --muted-foreground: hsl(260 18% 70%);
+  --accent: hsl(264 55% 26%);
+  --accent-foreground: hsl(0 0% 98%);
+  --destructive: hsl(0 62.8% 30.6%);
+  --destructive-foreground: hsl(0 0% 98%);
+  --border: hsl(260 40% 22%);
+  --input: hsl(260 40% 22%);
+  --ring: hsl(264 90% 72%);
+  --chart-1: hsl(264 90% 72%);
+  --chart-2: hsl(280 85% 75%);
+  --chart-3: hsl(252 70% 65%);
+  --chart-4: hsl(290 75% 68%);
+  --chart-5: hsl(245 60% 55%);
+  --sidebar-background: hsl(262 60% 10%);
+  --sidebar-foreground: hsl(250 30% 85%);
+  --sidebar-primary: hsl(264 90% 72%);
+  --sidebar-primary-foreground: hsl(260 65% 10%);
+  --sidebar-accent: hsl(264 55% 26%);
+  --sidebar-accent-foreground: hsl(0 0% 98%);
+  --sidebar-border: hsl(260 40% 22%);
+  --sidebar-ring: hsl(264 90% 72%);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar-background);
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+
+  /* Dokturek.ai brand fonts (see DESIGN.md) */
+  --font-sans: 'DM Sans', system-ui, sans-serif;
+  --font-display: 'Bricolage Grotesque', system-ui, sans-serif;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-sans);
+  }
+  /* Dokturek display font + tight tracking on headings */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: hsl(0 0% 80%);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: hsl(0 0% 95%);
+}
+
+.dark {
+  ::-webkit-scrollbar-thumb {
+    background-color: hsl(0 0% 90%);
+  }
+
+  ::-webkit-scrollbar-track {
+    background-color: hsl(0 0% 0%);
+  }
+}
+
+/* KaTeX Math Formula Styles */
+.katex-display-wrapper {
+  text-align: center;
+  position: relative;
+}
+
+.katex-display-wrapper .katex-display {
+  margin: 0.5em 0;
+  text-align: center;
+}
+
+.katex-inline-wrapper .katex {
+  font-size: inherit;
+  line-height: inherit;
+}
+
+/* Ensure KaTeX formulas inherit color properly */
+.katex .base {
+  color: inherit;
+}
+
+/* Improve KaTeX display for different themes */
+.katex .mord,
+.katex .mop,
+.katex .mbin,
+.katex .mrel,
+.katex .mpunct,
+.katex .mopen,
+.katex .mclose,
+.katex .minner {
+  color: inherit;
+}
+
+/* Fix KaTeX display overflow issues */
+.katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+  max-width: 100%;
+}
+
+.katex-display > .katex {
+  white-space: nowrap;
+}
+
+/* Mermaid v11 attaches helper elements directly to <body> outside React's tree:
+   1) A transient <div id="dmermaid-…"> render scratchpad (~150px tall, lives
+      ~500ms during render) used for layout measurement.
+   2) A persistent <div class="mermaidTooltip"> shared across renders.
+   Both default to position:absolute with no top/left, so they land in body's
+   normal flow below <main h-screen> and inflate documentElement.scrollHeight,
+   producing a page-level scrollbar that flashes during render and persists
+   afterwards across Tab switches. Force fixed so they don't contribute to
+   page scroll dimensions. */
+.mermaidTooltip,
+body > [id^="dmermaid-"] {
+  position: fixed !important;
+}
+
+/* Improve KaTeX error display */
+.katex .katex-error {
+  background-color: rgba(255, 0, 0, 0.1);
+  border: 1px solid rgba(255, 0, 0, 0.3);
+  border-radius: 4px;
+  padding: 2px 4px;
+  color: #dc2626;
+}
+
+.dark .katex .katex-error {
+  background-color: rgba(255, 0, 0, 0.2);
+  border-color: rgba(255, 0, 0, 0.4);
+  color: #ef4444;
+}
